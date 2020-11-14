@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     hooks:{
       beforeCreate(user){
         user.password = hashPassword(user.password)
-        if(!user.role){
+        if(user.role !== 'admin'){
           user.role = 'customer'
         }
       }
