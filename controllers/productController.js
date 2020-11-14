@@ -48,11 +48,30 @@ class ProductController {
   }
 
   static async deleteProduct(req,res,next){
+    
+    try{
     let id = +req.params.id
     
     await Product.destroy({where:{id}})
 
     res.status(200).json({message:`success delete product with id ${id}`})
+    }
+    catch(err){
+      next(error)
+    }
+  }
+
+  static async showProductById(req,res,next){
+    try {
+      let id= +req.params.id
+      const product = await Product.findByPk(id)
+      if(!product){
+        throw ({name: "NotFound"})
+      }
+      res.status(200).json(product);
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
