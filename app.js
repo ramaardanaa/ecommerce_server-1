@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 app.use(cors())
 
-// app.get("/", (req,res) => res.status(200).json({msg:"success"}))
+app.get("/", (req,res) => res.status(200).json({msg:"success"}))
 app.use(router)
 app.use(errorHandler)
 
