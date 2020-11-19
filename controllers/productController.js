@@ -21,7 +21,7 @@ class ProductController {
 
   static async showProduct(req, res, next) {
     try {
-      const product = await Product.findAll()
+      const product = await Product.findAll({order: [['id','ASC']]})
       res.status(200).json(product);
     } catch (error) {
       next(error)

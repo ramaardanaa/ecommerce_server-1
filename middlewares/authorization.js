@@ -1,6 +1,6 @@
-const {User} = require('../models/')
+const {User,Cart} = require('../models/')
 
-async function authorization(req,res,next){
+async function adminAuthorization(req,res,next){
     try {
       const data = await User.findOne({where:{email:req.loggedInUser.email}})
         if(data.role !== 'admin') {
@@ -13,4 +13,4 @@ async function authorization(req,res,next){
     }
 }
 
-module.exports = authorization
+module.exports = {adminAuthorization}

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Product,{foreignKey:"UserId"})
       User.hasMany(models.Banner,{foreignKey:"UserId"})
+      User.belongsToMany(models.Product,({foreignKey:"UserId",through:models.Cart}))
     }
   };
   User.init({
@@ -24,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     hooks:{
       beforeCreate(user){
         user.password = hashPassword(user.password)
-        if(user.role !== 'admin'){
+        if(user.role !== 'admin' || null){
           user.role = 'customer'
         }
       }

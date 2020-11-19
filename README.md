@@ -58,7 +58,6 @@ not needed
 
 _Response (200)_
 ```
-[
    {
         "id": 10,
         "name": "ipon 12",
@@ -68,8 +67,7 @@ _Response (200)_
         "UserId": 1,
         "createdAt": "2020-11-14T08:11:59.055Z",
         "updatedAt": "2020-11-14T08:11:59.055Z"
-    },
-]
+    }
 ```
 
 _Response (400 - Bad Request)_
@@ -439,3 +437,244 @@ _Response (400 - Bad Request)_
 }
 ```
 ----
+### GET /carts
+
+> Get all carts
+
+_Request Header_
+```
+{
+  "access_token": "<your access token>"
+}
+```
+
+_Request Body_
+```
+not needed
+```
+
+_Response (200)_
+```
+[
+    {
+        "id": 45,
+        "ProductId": 6,
+        "UserId": 10,
+        "quantity": 1,
+        "status": false,
+        "createdAt": "2020-11-19T02:50:55.155Z",
+        "updatedAt": "2020-11-19T02:50:55.155Z",
+        "Product": {
+            "id": 6,
+            "name": "Gatecreeper Body and Mind T-Shirt",
+            "image_url": "https://cdn.shopify.com/s/files/1/2244/7843/products/GATECREEPER-BodyAndMindSand-TS-F_2000x.jpg?v=1600278805",
+            "price": 270000,
+            "stock": 5,
+            "UserId": 1,
+            "createdAt": "2020-11-18T09:12:21.379Z",
+            "updatedAt": "2020-11-19T02:44:21.954Z"
+        }
+    }
+]
+```
+
+_Response (400 - Bad Request)_
+```
+{
+  "error": "Invalid request"
+}
+```
+---
+
+### GET /carts/history
+
+> Get all carts history
+
+_Request Header_
+```
+{
+  "access_token": "<your access token>"
+}
+```
+
+_Request Body_
+```
+not needed
+```
+
+_Response (200)_
+```
+[
+    {
+        "id": 45,
+        "ProductId": 6,
+        "UserId": 10,
+        "quantity": 1,
+        "status": true,
+        "createdAt": "2020-11-19T02:50:55.155Z",
+        "updatedAt": "2020-11-19T02:50:55.155Z",
+        "Product": {
+            "id": 6,
+            "name": "Gatecreeper Body and Mind T-Shirt",
+            "image_url": "https://cdn.shopify.com/s/files/1/2244/7843/products/GATECREEPER-BodyAndMindSand-TS-F_2000x.jpg?v=1600278805",
+            "price": 270000,
+            "stock": 5,
+            "UserId": 1,
+            "createdAt": "2020-11-18T09:12:21.379Z",
+            "updatedAt": "2020-11-19T02:44:21.954Z"
+        }
+    }
+]
+```
+
+_Response (400 - Bad Request)_
+```
+{
+  "error": "Invalid request"
+}
+```
+---
+
+### POST /carts
+
+> Create new cart
+
+_Request Header_
+```
+{
+  "access_token": "<your access token>"
+}
+```
+
+_Request Body_
+```
+{
+   "ProductId": "5",
+   "quantity": "4",
+}
+```
+
+_Response (201 - Created)_
+```
+
+{
+    "id": 54,
+    "ProductId": 5,
+    "UserId": 2,
+    "quantity": 5,
+    "updatedAt": "2020-11-19T04:21:47.859Z",
+    "createdAt": "2020-11-19T04:21:47.859Z",
+    "status": false
+}
+
+```
+
+_Response (400 - Bad Request)_
+```
+{
+  "error": "Invalid requests"
+}
+```
+---
+
+### PUT /carts/:id
+
+> Update existing carts
+
+_Request Header_
+```
+{
+  "access_token": "<your access token>"
+}
+```
+
+_Request Body_
+```
+{
+   "title": "2",
+}
+```
+
+_Response (200 - Success)_
+```
+{
+    "id": 54,
+    "ProductId": 5,
+    "UserId": 2,
+    "quantity": 2,
+    "status": false,
+    "createdAt": "2020-11-19T04:21:47.859Z",
+    "updatedAt": "2020-11-19T04:56:10.568Z"
+}
+```
+
+_Response (400 - Bad Request)_
+```
+{
+  "error": "Invalid requests"
+}
+```
+---
+
+### PATCH /carts
+
+> Checkout carts
+
+_Request Header_
+```
+{
+  "access_token": "<your access token>"
+}
+```
+
+_Request Body_
+```
+not needed
+```
+
+_Response (200 - Success)_
+```
+{
+    "msg": "success checkout"
+}
+```
+
+_Response (400 - Bad Request)_
+```
+{
+  "error": "Invalid requests"
+}
+```
+---
+
+
+### DELETE /carts/:id
+
+> Delete carts
+
+_Request Header_
+```
+{
+  "access_token": "<your access token>"
+}
+```
+
+_Request Body_
+```
+not needed
+```
+
+_Response (200 - Success)_
+```
+{
+    "msg": "Success remove product"
+}
+```
+
+_Response (400 - Bad Request)_
+```
+{
+  "error": "Invalid requests"
+}
+```
+---

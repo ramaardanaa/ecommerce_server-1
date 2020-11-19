@@ -17,7 +17,7 @@ beforeAll((done) => {
       done()
     })
     .catch(err =>{
-      done()
+      done(err)
     })
 })
 
@@ -27,7 +27,7 @@ afterAll(done => {
     done()
   })
   .catch(err => {
-    done()
+    done(err)
   })
 })
 
@@ -43,7 +43,7 @@ describe('Test Login POST /login', () => {
           done()
       })
       .catch(err => {
-        done.fail(err)
+        done(err)
       })
   })
   it('test login email found but wrong password', (done) => {
@@ -57,7 +57,7 @@ describe('Test Login POST /login', () => {
           done()
       })
       .catch(err => {
-          done.fail(err)
+          done(err)
       })
   })
   it('test login email not found in db', (done) => {
@@ -72,7 +72,7 @@ describe('Test Login POST /login', () => {
           done()
       })
       .catch(err => {
-          ddone.fail(err)
+          ddone(err)
       })
   })
   it('test login email and password empty', (done) => {
@@ -87,7 +87,7 @@ describe('Test Login POST /login', () => {
           done()
       })
       .catch(err => {
-          done.fail(err)
+          done(err)
       })
   })
 }) 
